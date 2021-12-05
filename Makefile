@@ -19,20 +19,12 @@ NORM			= norminette -R CheckForbiddenSourceHeader
 NAME			= libftprintf.a
 
 PATH_PRINTF		= ./
-SRC_PRINTF		= 
-				ft_printf.c		sk_charcmp.c \	
-				sk_putchar_fd.c	
-				sk_putstr_fd.c	
-				sk_putstr_printf_fd.c
-				sk_putptr_fd.c \
-
-				sk_putnbr_s_fd.c \
-				sk_putnbr_u_fd.c	
-				sk_puthex_low_fd.c	
-				sk_puthex_up_fd.c \
-				
+SRC_PRINTF		= \
+				ft_printf.c		sk_charcmp.c \
+				sk_putchar_fd.c	sk_putstr_fd.c		sk_putstr_printf_fd.c \
+				sk_putptr_fd.c	sk_putnbr_s_fd.c	sk_putnbr_u_fd.c \
+				sk_puthex_low_fd.c 	sk_puthex_up_fd.c \
 				sk_putnbr_fd.c
-            	sk_puthex_fd.c		
 
 HD_PRINTF		= ft_printf.h
 
