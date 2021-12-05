@@ -12,15 +12,16 @@
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 /* ************************************************************************** */
-# include "ft_printf.h"
 # include "libft/libft.h"
 /* ************************************************************************** */
 # include <stdlib.h>
+# include <stdio.h>
 # include <stdarg.h>
 # include <unistd.h>
+# include <limits.h>
 
 /* ************************************************************************** */
-int	ft_printf(const char *text, ...);
+int		ft_printf(const char *text, ...);
 /* ------------------------------------------------------ */
 size_t	sk_putchar_fd(char c, int fd);
 size_t	sk_putstr_fd(char *s, int fd);
