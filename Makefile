@@ -19,7 +19,21 @@ NORM			= norminette -R CheckForbiddenSourceHeader
 NAME			= libftprintf.a
 
 PATH_PRINTF		= ./
-SRC_PRINTF		= ft_printf.c
+SRC_PRINTF		= 
+				ft_printf.c		sk_charcmp.c \	
+				sk_putchar_fd.c	
+				sk_putstr_fd.c	
+				sk_putstr_printf_fd.c
+				sk_putptr_fd.c \
+
+				sk_putnbr_s_fd.c \
+				sk_putnbr_u_fd.c	
+				sk_puthex_low_fd.c	
+				sk_puthex_up_fd.c \
+				
+				sk_putnbr_fd.c
+            	sk_puthex_fd.c		
+
 HD_PRINTF		= ft_printf.h
 
 OBJ_PRINTF		= ${SRC_PRINTF:.c=.o}
@@ -29,18 +43,20 @@ NAME_LIBFT		= libft.a
 HD_LIBFT		= libft.h
 
 # **************************************************************************** #
-all: $(NAME)
+all: ${NAME}
 
 # **************************************************************************** #
-$(NAME): $(OBJ_PRINTF) sub_all
-	${AR} $(NAME) $(OBJ_PRINTF)
+${NAME}: ${OBJ_PRINTF} sub_all
+	cp ${PATH_LIBFT}${NAME_LIBFT} ${PATH_PRINTF}
+	mv ${NAME_LIBFT} ${NAME}
+	${AR} ${NAME} ${OBJ_PRINTF}
 # **************************************************************************** #
 
 clean: sub_clean
-	${RM} $(OBJ_PRINTF)
+	${RM} ${OBJ_PRINTF}
 
 fclean: clean sub_fclean
-	${RM} $(NAME)
+	${RM} ${NAME}
 
 re: fclean all sub_re
 
@@ -63,4 +79,4 @@ sub_re:
 # **************************************************************************** #
 
 nono:
-	$(NORM) $(PATH_PRINTF)
+	${NORM} ${PATH_PRINTF}
