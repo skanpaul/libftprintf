@@ -13,6 +13,7 @@
 
 /* ************************************************************************** */
 static int	sk_printconv(va_list ptr_var, char type_conv);
+static int	sk_isprintformat(char c);
 
 /* ************************************************************************** */
 int	ft_printf(const char *text, ...)
@@ -28,7 +29,7 @@ int	ft_printf(const char *text, ...)
 	va_start(ptr_var, text);
 	while (text[i] != '\0')
 	{
-		if (sk_charcmp(text[i], '%'))
+		if (sk_charcmp(text[i], '%') && sk_isprintformat(text[i + 1]))
 		{
 			i++;
 			cnt_prnt += sk_printconv(ptr_var, text[i]) - 1;
@@ -67,6 +68,15 @@ static int	sk_printconv(va_list ptr_var, char type_conv)
 		write(1, "%%", 1);
 		return (1);
 	}
+	return (0);
+}
+
+/* ************************************************************************** */
+static int	sk_isprintformat(char c)
+{
+	if ((c == 'c') || (c == 's') || (c == 'p') || (c == 'd') || (c == 'i')
+		|| (c == 'u') || (c == 'x') || (c == 'X') || (c == '%'))
+		return (1);
 	return (0);
 }
 

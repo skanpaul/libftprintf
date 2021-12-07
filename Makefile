@@ -43,6 +43,12 @@ ${NAME}: ${OBJ_PRINTF} sub_all
 	mv ${NAME_LIBFT} ${NAME}
 	${AR} ${NAME} ${OBJ_PRINTF}
 
+${NAME}: ${OBJ_PRINTF}
+	cp libft/libft.a ./
+	mv libft.a libprintf.a
+	${AR} libprintf.a ${OBJ_PRINTF}
+
+
 clean: sub_clean
 	${RM} ${OBJ_PRINTF}
 
@@ -74,4 +80,3 @@ sub_nono:
 	${MAKE} nono -C ${PATH_SUBMAKE}
 
 # **************************************************************************** #
-
