@@ -38,24 +38,22 @@ HD_NORM			= ${HD_PRINTF}
 # **************************************************************************** #
 all: ${NAME}
 
-${NAME}: ${OBJ_PRINTF} sub_all
+#${NAME}: ${OBJ_PRINTF} sub_all
+${NAME}: ${OBJ_PRINTF}
 	cp ${PATH_LIBFT}${NAME_LIBFT} ${PATH_PRINTF}
 	mv ${NAME_LIBFT} ${NAME}
 	${AR} ${NAME} ${OBJ_PRINTF}
 
-${NAME}: ${OBJ_PRINTF}
-	cp libft/libft.a ./
-	mv libft.a libprintf.a
-	${AR} libprintf.a ${OBJ_PRINTF}
-
-
-clean: sub_clean
+# clean: sub_clean
+clean: 
 	${RM} ${OBJ_PRINTF}
 
-fclean: clean sub_fclean
+# fclean: clean sub_fclean
+fclean: clean 
 	${RM} ${NAME}
 
-re: fclean all sub_re
+# re: fclean all sub_re
+re: fclean all 
 
 .PHONY: all clean fclean re
 
@@ -64,19 +62,19 @@ nono: sub_nono
 	${NORM} ${HD_NORM}
 
 # **************************************************************************** #
-sub_all:
-	${MAKE} all -C ${PATH_SUBMAKE}
-
-sub_clean:
-	${MAKE} clean -C ${PATH_SUBMAKE}
-
-sub_fclean:
-	${MAKE} fclean -C ${PATH_SUBMAKE}
-
-sub_re:
-	${MAKE} re -C ${PATH_SUBMAKE}
-
-sub_nono:
-	${MAKE} nono -C ${PATH_SUBMAKE}
+#sub_all:
+#	${MAKE} all -C ${PATH_SUBMAKE}
+#
+#sub_clean:
+#	${MAKE} clean -C ${PATH_SUBMAKE}
+#
+#sub_fclean:
+#	${MAKE} fclean -C ${PATH_SUBMAKE}
+#
+#sub_re:
+#	${MAKE} re -C ${PATH_SUBMAKE}
+#
+#sub_nono:
+#	${MAKE} nono -C ${PATH_SUBMAKE}
 
 # **************************************************************************** #
