@@ -19,6 +19,7 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdbool.h>
 
 /* ************************************************************************** */
 int		ft_printf(const char *text, ...);
@@ -32,8 +33,6 @@ size_t	sk_putnbr_s_fd(int n, int fd);
 size_t	sk_putnbr_u_fd(unsigned int u, int fd);
 size_t	sk_puthex_low_fd(int n, int fd);
 size_t	sk_puthex_up_fd(int n, int fd);
-
-size_t	sk_charcmp(char c_src, char c_cmp);
 
 /* ************************************************************************** */
 #endif

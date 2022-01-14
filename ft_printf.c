@@ -13,7 +13,7 @@
 
 /* ************************************************************************** */
 static int	sk_printconv(va_list ptr_var, char type_conv);
-static int	sk_isprintformat(char c);
+static bool	isvariadic(const char *seg);
 
 /* ************************************************************************** */
 int	ft_printf(const char *text, ...)
@@ -29,15 +29,17 @@ int	ft_printf(const char *text, ...)
 	va_start(ptr_var, text);
 	while (text[i] != '\0')
 	{
-		if (sk_charcmp(text[i], '%') && sk_isprintformat(text[i + 1]))
+		if (isvariadic(&text[i]))
 		{
-			i++;
-			cnt_prnt += sk_printconv(ptr_var, text[i]) - 1;
+			cnt_prnt += sk_printconv(ptr_var, text[i + 1]);
+			i += 2;
 		}
 		else
+		{
 			write(1, &text[i], 1);
-		i++;
-		cnt_prnt++;
+			cnt_prnt++;
+			i++;
+		}
 	}	
 	va_end(ptr_var);
 	return (cnt_prnt);
@@ -72,12 +74,12 @@ static int	sk_printconv(va_list ptr_var, char type_conv)
 }
 
 /* ************************************************************************** */
-static int	sk_isprintformat(char c)
+static bool	isvariadic(const char *seg)
 {
-	if ((c == 'c') || (c == 's') || (c == 'p') || (c == 'd') || (c == 'i')
-		|| (c == 'u') || (c == 'x') || (c == 'X') || (c == '%'))
-		return (1);
-	return (0);
+	return ((seg[0] == '%')
+		&& ((seg[1] == 'c') || (seg[1] == 's') || (seg[1] == 'p')
+			|| (seg[1] == 'd') || (seg[1] == 'i') || (seg[1] == 'u')
+			|| (seg[1] == 'x') || (seg[1] == 'X') || (seg[1] == '%')));
 }
 
 /* ************************************************************************** */
