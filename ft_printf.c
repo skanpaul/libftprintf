@@ -12,7 +12,7 @@
 #include "ft_printf.h"
 
 /* ************************************************************************** */
-static int	sk_printconv(va_list ptr_var, char type_conv);
+static int	print_variadic(va_list ptr_var, char type_conv);
 static bool	isvariadic(const char *seg);
 
 /* ************************************************************************** */
@@ -31,7 +31,7 @@ int	ft_printf(const char *text, ...)
 	{
 		if (isvariadic(&text[i]))
 		{
-			cnt_prnt += sk_printconv(ptr_var, text[i + 1]);
+			cnt_prnt += print_variadic(ptr_var, text[i + 1]);
 			i += 2;
 		}
 		else
@@ -46,7 +46,7 @@ int	ft_printf(const char *text, ...)
 }
 
 /* ************************************************************************** */
-static int	sk_printconv(va_list ptr_var, char type_conv)
+static int	print_variadic(va_list ptr_var, char type_conv)
 {
 	int	n;
 
@@ -113,7 +113,7 @@ static bool	isvariadic(const char *seg)
 /* ************************************************************************** */
 
 /* ************************************************************************** */
-/* 	sk_printconv															  */
+/* 	print_variadic															  */
 /* -------------------------------------------------------------------------- */
 /*		DESCRITPION:	print the VARIADIC on the terminal					  */
 /* -------------------------------------------------------------------------- */

@@ -1,4 +1,4 @@
 .DS_Store
 *.o
 libft/
-Tripouille_Printf/
+Tripouille_printf/
